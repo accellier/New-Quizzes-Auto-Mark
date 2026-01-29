@@ -21,10 +21,10 @@
         if (!btn) return;
 
         if (isAutoMarking) {
-            btn.innerHTML = `🛑 Stop (${markCount} Ticked)`;
+            btn.innerHTML = `🛑 Stop (${markCount} Marked)`;
             btn.style.backgroundColor = '#E62429';
         } else {
-            btn.innerHTML = markCount > 0 ? `🚀 Start (Ticked: ${markCount})` : '🚀 Start Auto-Tick';
+            btn.innerHTML = markCount > 0 ? `🚀 Start (Marked: ${markCount})` : '🚀 Start Auto-Mark';
             btn.style.backgroundColor = '#03893d';
         }
     }
@@ -56,7 +56,7 @@
     }
 
     function stopProcess() {
-        console.log("Coding Partner: No more questions found. Auto-stopping.");
+        console.log("No more questions found. Stopping.");
         isAutoMarking = false;
         updateButtonUI();
     }
@@ -78,7 +78,7 @@
                 button.dataset.processing = "true";
 
                 setTimeout(() => {
-                    console.log(`Coding Partner: Marking #${markCount + 1}`);
+                    console.log(`Marking #${markCount + 1}`);
                     ['mousedown', 'mouseup', 'click'].forEach(type => {
                         button.dispatchEvent(new MouseEvent(type, { bubbles: true, view: window }));
                     });
